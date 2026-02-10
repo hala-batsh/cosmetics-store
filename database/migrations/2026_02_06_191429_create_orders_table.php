@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('address_id')->constrained('addresses')->cascadeOnDelete();
-            $table->foreignId('delivery_id')->constrained('delivery_companies');
+            $table->foreignId('delivery_companies_table_id')->constrained('delivery_companies_table')->cascadeOnDelete();
 
             $table->string('payment_method_id'); //طريقة الدفع الي قررنا تكون كاش
             $table->string('payment_status'); // حالة الدفع يعني بعد التسليم لانو كاش
