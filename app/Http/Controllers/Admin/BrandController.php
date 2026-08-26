@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Brand;
+
+class BrandController extends Controller
+{
+
+
+
+    public function create()
+    {
+        $brands = Brand::all();
+
+        return view('admin.products.create', compact('brands'));
+    }
+}
