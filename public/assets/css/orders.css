@@ -1,0 +1,1398 @@
+
+/* =========================================================
+   LUXURY ORDERS PAGE
+========================================================= */
+
+.lux-orders-page {
+    direction: rtl;
+    position: relative;
+    min-height: 100vh;
+    padding: 75px 25px 100px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 8% 10%,
+            rgba(198, 111, 143, .18),
+            transparent 27%),
+        radial-gradient(circle at 92% 18%,
+            rgba(151, 70, 102, .14),
+            transparent 30%),
+        radial-gradient(circle at 15% 85%,
+            rgba(201, 120, 149, .13),
+            transparent 28%),
+        radial-gradient(circle at 90% 90%,
+            rgba(166, 83, 115, .12),
+            transparent 30%),
+        linear-gradient(
+            135deg,
+            #fffafd 0%,
+            #fdf1f5 45%,
+            #fff8fa 100%
+        );
+}
+
+
+/* =========================================================
+   DECORATIVE BACKGROUND
+========================================================= */
+
+.lux-orders-page::before {
+    content: "✦";
+
+    position: absolute;
+    top: 70px;
+    left: 7%;
+
+    color: rgba(166, 83, 115, .12);
+    font-size: 105px;
+
+    animation:
+        luxOrderStarFloat
+        5s
+        ease-in-out
+        infinite;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+.lux-orders-page::after {
+    content: "";
+
+    position: absolute;
+    right: -170px;
+    bottom: -180px;
+
+    width: 440px;
+    height: 440px;
+
+    border-radius: 50%;
+
+    border: 70px solid rgba(166, 83, 115, .035);
+
+    animation:
+        luxOrderCircleFloat
+        8s
+        ease-in-out
+        infinite;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   FLOATING GLOWS
+========================================================= */
+
+.lux-orders-glow {
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation:
+        luxGlowFloat
+        8s
+        ease-in-out
+        infinite;
+}
+
+
+.lux-orders-glow-one {
+    top: 35%;
+    left: -150px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(198, 111, 143, .13),
+            transparent 70%
+        );
+}
+
+
+.lux-orders-glow-two {
+    top: 55%;
+    right: -150px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(166, 83, 115, .11),
+            transparent 70%
+        );
+
+    animation-delay: -3s;
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.lux-orders-star {
+    position: absolute;
+
+    color: rgba(166, 83, 115, .16);
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    animation:
+        luxOrderStarFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+.lux-orders-star-one {
+    top: 170px;
+    right: 8%;
+
+    font-size: 42px;
+
+    animation-delay: -1.5s;
+}
+
+
+.lux-orders-star-two {
+    top: 52%;
+    left: 8%;
+
+    font-size: 65px;
+
+    animation-delay: -3s;
+}
+
+
+/* =========================================================
+   WRAPPER
+========================================================= */
+
+.lux-orders-wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 1080px;
+
+    margin: auto;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.lux-orders-header {
+    position: relative;
+
+    text-align: center;
+
+    margin-bottom: 55px;
+
+    animation:
+        luxOrdersHeaderIn
+        .9s
+        ease
+        both;
+}
+
+
+/* Kicker */
+
+.lux-orders-kicker {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-bottom: 12px;
+
+    color: #a65373;
+
+    font-size: 20px;
+    font-weight: 950;
+
+    letter-spacing: .5px;
+}
+
+
+.lux-orders-kicker i {
+    font-size: 18px;
+
+    animation:
+        luxKickerStar
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+/* Main title */
+
+.lux-orders-header h1 {
+    position: relative;
+
+    margin: 0;
+
+    color: #38232d;
+
+    font-size: 52px;
+    font-weight: 950;
+
+    line-height: 1.2;
+
+    letter-spacing: -1.5px;
+
+    text-shadow:
+        0 5px 18px rgba(83, 39, 57, .08);
+}
+
+
+/* Subtitle */
+
+.lux-orders-header p {
+    margin: 15px auto 0;
+
+    color: #705562;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1.9;
+}
+
+
+/* Decorative line */
+
+.lux-orders-title-line {
+    position: relative;
+
+    width: 110px;
+    height: 4px;
+
+    margin: 22px auto 0;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #78364f,
+            #c97895,
+            #78364f
+        );
+
+    box-shadow:
+        0 5px 18px rgba(166, 83, 115, .18);
+}
+
+
+.lux-orders-title-line::before,
+.lux-orders-title-line::after {
+    content: "✦";
+
+    position: absolute;
+    top: 50%;
+
+    color: #a65373;
+
+    font-size: 13px;
+
+    transform: translateY(-50%);
+
+    animation:
+        luxTinyStar
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+.lux-orders-title-line::before {
+    right: -27px;
+}
+
+
+.lux-orders-title-line::after {
+    left: -27px;
+
+    animation-delay: -1.2s;
+}
+
+
+/* =========================================================
+   COUNT BAR
+========================================================= */
+
+.lux-orders-count {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+
+    padding: 15px 20px;
+
+    border-radius: 17px;
+
+    background: rgba(255, 255, 255, .72);
+
+    border: 1px solid rgba(220, 191, 204, .7);
+
+    box-shadow:
+        0 10px 30px rgba(68, 31, 47, .05);
+
+    backdrop-filter: blur(10px);
+
+    animation:
+        luxOrderCardIn
+        .7s
+        ease
+        .15s
+        both;
+}
+
+
+.lux-orders-count > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #4b303b;
+
+    font-size: 15px;
+    font-weight: 850;
+}
+
+
+.lux-orders-count > div i {
+    color: #a65373;
+
+    font-size: 19px;
+}
+
+
+.lux-orders-count strong {
+    color: #8c3e5c;
+
+    font-size: 18px;
+    font-weight: 950;
+}
+
+
+.lux-orders-count > span {
+    color: #8a737d;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   ORDERS LIST
+========================================================= */
+
+.lux-orders-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   ORDER CARD
+========================================================= */
+
+.lux-orders-card {
+    position: relative;
+
+    padding: 28px;
+
+    border-radius: 27px;
+
+    background: rgba(255, 255, 255, .94);
+
+    border: 1px solid #e5d1d9;
+
+    box-shadow:
+        0 20px 50px rgba(68, 31, 47, .09);
+
+    overflow: hidden;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease,
+        border-color .4s ease;
+
+    animation:
+        luxOrderCardIn
+        .75s
+        ease
+        both;
+}
+
+
+.lux-orders-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #d6afbe;
+
+    box-shadow:
+        0 28px 60px rgba(94, 42, 64, .13);
+}
+
+
+.lux-orders-card::before {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #78364f,
+            #a65373,
+            #d28fa6
+        );
+}
+
+
+/* Shine */
+
+.lux-orders-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: -120px;
+    left: -160px;
+
+    width: 80px;
+    height: 330px;
+
+    background: rgba(255,255,255,.45);
+
+    transform: rotate(28deg);
+
+    transition:
+        left .8s ease;
+
+    pointer-events: none;
+}
+
+
+.lux-orders-card:hover::after {
+    left: 110%;
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.lux-orders-card-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid #eadce2;
+}
+
+
+.lux-orders-number {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.lux-orders-number span {
+    color: #907983;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.lux-orders-number strong {
+    color: #38232d;
+
+    font-size: 23px;
+    font-weight: 950;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.lux-orders-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+    font-weight: 950;
+
+    border: 1px solid #e3c8d2;
+}
+
+
+.lux-orders-status span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #a65373;
+
+    box-shadow:
+        0 0 0 4px rgba(166, 83, 115, .10);
+
+    animation:
+        luxStatusPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+.lux-status-pending,
+.lux-status-processing {
+    color: #8b3e5c;
+    background: #faeaf0;
+}
+
+
+.lux-status-shipped {
+    color: #70425a;
+    background: #f3e8ef;
+}
+
+
+.lux-status-delivered {
+    color: #52705d;
+    background: #eaf5ed;
+}
+
+
+.lux-status-delivered span {
+    background: #668c72;
+}
+
+
+.lux-status-cancelled {
+    color: #8a4c4c;
+    background: #faeeee;
+}
+
+
+.lux-status-cancelled span {
+    background: #a45d5d;
+}
+
+
+/* =========================================================
+   INFO GRID
+========================================================= */
+
+.lux-orders-info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+    padding: 23px 0;
+}
+
+
+.lux-orders-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+
+    padding: 14px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffafd,
+            #fdf1f5
+        );
+
+    border: 1px solid #eddae2;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.lux-orders-info:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 25px rgba(166, 83, 115, .09);
+}
+
+
+.lux-orders-info-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a65373,
+            #813650
+        );
+
+    box-shadow:
+        0 7px 15px rgba(129, 54, 80, .15);
+}
+
+
+.lux-orders-info > div:last-child {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+}
+
+
+.lux-orders-info span {
+    color: #87727c;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+.lux-orders-info strong {
+    color: #3d2933;
+
+    font-size: 14px;
+    font-weight: 950;
+}
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+.lux-orders-payment {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+
+    padding: 14px 17px;
+
+    border-radius: 15px;
+
+    background: #fff8fa;
+
+    border: 1px solid #ead8df;
+}
+
+
+.lux-orders-payment > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #705562;
+
+    font-size: 13px;
+    font-weight: 850;
+}
+
+
+.lux-orders-payment > div i {
+    color: #a65373;
+
+    font-size: 17px;
+}
+
+
+.lux-orders-payment > strong {
+    color: #8b3d5b;
+
+    font-size: 14px;
+    font-weight: 950;
+}
+
+
+/* =========================================================
+   PRODUCT PREVIEW
+========================================================= */
+
+.lux-orders-products {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 23px;
+}
+
+
+.lux-orders-product,
+.lux-orders-more-products {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #f9eaf0;
+
+    border: 1px solid #e5ccd6;
+
+    overflow: hidden;
+}
+
+
+.lux-orders-product img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .4s ease;
+}
+
+
+.lux-orders-product:hover img {
+    transform: scale(1.12);
+}
+
+
+.lux-orders-no-image {
+    color: #bd8299;
+
+    font-size: 22px;
+}
+
+
+.lux-orders-more-products {
+    color: #8c3e5c;
+
+    background:
+        linear-gradient(
+            145deg,
+            #faeaf0,
+            #f2dbe4
+        );
+
+    font-size: 14px;
+    font-weight: 950;
+}
+
+
+/* =========================================================
+   CARD BOTTOM
+========================================================= */
+
+.lux-orders-card-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid #eadce2;
+}
+
+
+.lux-orders-total {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.lux-orders-total span {
+    color: #806b75;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.lux-orders-total strong {
+    color: #8c3e5c;
+
+    font-size: 27px;
+    font-weight: 950;
+}
+
+
+/* =========================================================
+   DETAILS BUTTON
+========================================================= */
+
+.lux-orders-details-btn {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    min-height: 53px;
+
+    padding: 0 23px;
+
+    border-radius: 15px;
+
+    color: #fff !important;
+
+    background:
+        linear-gradient(
+            110deg,
+            #71324b,
+            #91425f,
+            #b96381
+        );
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 950;
+
+    box-shadow:
+        0 12px 27px rgba(113, 50, 75, .22);
+
+    overflow: hidden;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.lux-orders-details-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: -60px;
+    left: -90px;
+
+    width: 65px;
+    height: 180px;
+
+    background: rgba(255,255,255,.18);
+
+    transform: rotate(25deg);
+
+    transition:
+        left .7s ease;
+}
+
+
+.lux-orders-details-btn:hover::before {
+    left: 120%;
+}
+
+
+.lux-orders-details-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 35px rgba(113, 50, 75, .30);
+}
+
+
+.lux-orders-details-btn i {
+    transition:
+        transform .3s ease;
+}
+
+
+.lux-orders-details-btn:hover i {
+    transform: translateX(-6px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.lux-orders-empty {
+    position: relative;
+
+    padding: 65px 30px;
+
+    text-align: center;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.94);
+
+    border: 1px solid #e5d1d9;
+
+    box-shadow:
+        0 25px 60px rgba(68,31,47,.10);
+
+    animation:
+        luxOrderCardIn
+        .8s
+        ease
+        both;
+}
+
+
+.lux-orders-empty-icon {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+
+    border-radius: 25px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a65373,
+            #813650
+        );
+
+    box-shadow:
+        0 15px 30px rgba(129,54,80,.20);
+
+    font-size: 35px;
+}
+
+
+.lux-orders-empty h2 {
+    margin: 25px 0 10px;
+
+    color: #38232d;
+
+    font-size: 27px;
+    font-weight: 950;
+}
+
+
+.lux-orders-empty p {
+    margin-bottom: 25px;
+
+    color: #806b75;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.lux-orders-main-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 54px;
+
+    padding: 0 25px;
+
+    border-radius: 15px;
+
+    color: #fff !important;
+
+    background:
+        linear-gradient(
+            110deg,
+            #71324b,
+            #91425f,
+            #b96381
+        );
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 950;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes luxOrdersHeaderIn {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes luxOrderCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes luxOrderStarFloat {
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(1);
+
+        opacity: .55;
+    }
+
+    50% {
+        transform:
+            translateY(-16px)
+            rotate(12deg)
+            scale(1.08);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes luxKickerStar {
+    0%, 100% {
+        transform:
+            rotate(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            rotate(15deg)
+            scale(1.2);
+    }
+}
+
+
+@keyframes luxTinyStar {
+    0%, 100% {
+        transform:
+            translateY(-50%)
+            scale(1);
+
+        opacity: .6;
+    }
+
+    50% {
+        transform:
+            translateY(-50%)
+            scale(1.35);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes luxGlowFloat {
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(25px, -20px)
+            scale(1.08);
+    }
+}
+
+
+@keyframes luxOrderCircleFloat {
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translate(-20px, -15px)
+            rotate(8deg);
+    }
+}
+
+
+@keyframes luxStatusPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 0 3px rgba(166,83,115,.08);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 7px rgba(166,83,115,.13);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .lux-orders-info-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .lux-orders-page {
+        padding: 50px 13px 70px;
+    }
+
+
+    .lux-orders-header {
+        margin-bottom: 38px;
+    }
+
+
+    .lux-orders-header h1 {
+        font-size: 39px;
+    }
+
+
+    .lux-orders-header p {
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+
+    .lux-orders-kicker {
+        font-size: 13px;
+    }
+
+
+    .lux-orders-title-line {
+        width: 75px;
+    }
+
+
+    .lux-orders-count {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        flex-direction: column;
+    }
+
+
+    .lux-orders-card {
+        padding: 21px 17px;
+
+        border-radius: 22px;
+    }
+
+
+    .lux-orders-card-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .lux-orders-number strong {
+        font-size: 21px;
+    }
+
+
+    .lux-orders-info-grid {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .lux-orders-info strong {
+        font-size: 14px;
+    }
+
+
+    .lux-orders-payment {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        flex-direction: column;
+    }
+
+
+    .lux-orders-card-bottom {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .lux-orders-details-btn {
+        width: 100%;
+    }
+
+
+    .lux-orders-total strong {
+        font-size: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .lux-orders-header h1 {
+        font-size: 34px;
+    }
+
+
+    .lux-orders-header p {
+        font-size: 13px;
+    }
+
+
+    .lux-orders-star-one {
+        right: 3%;
+    }
+
+
+    .lux-orders-star-two {
+        left: 3%;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .lux-orders-page *,
+    .lux-orders-page *::before,
+    .lux-orders-page *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}

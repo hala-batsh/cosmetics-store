@@ -1,119 +1,192 @@
 @extends('admin.layout')
 
 @section('content')
-    <div class="page-box">
-
+    <div class="page-box products-page">
 
         <div class="page-header">
-            <h2>
-                <i class="bi bi-box"></i> Products
-            </h2>
 
-            <a href="{{ route('admin.products.create') }}" class="btn btn-save">
-                <i class="bi bi-plus-lg"></i> Add Product
+            <div class="page-title">
+
+                <div class="page-title-icon products-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+
+                <div>
+                    <h2>المنتجات</h2>
+                    <p>إدارة منتجات المتجر ومتابعة حالتها</p>
+                </div>
+
+            </div>
+
+
+            <a href="{{ route('admin.products.create') }}" class="add-btn">
+                <i class="bi bi-plus-circle"></i>
+                <span>إضافة منتج</span>
             </a>
+
         </div>
 
 
-        <table class="table table-bordered mt-4">
-            <thead class="table-light">
-                <tr>
-                    <th>#</th>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th width="220">Actions</th>
-                </tr>
-            </thead>
+        <div class="products-table-wrapper">
 
-            <tbody>
-                @forelse($products as $product)
+            <table class="products-table">
+
+                <thead>
                     <tr>
-                        <td>{{ $product->id }}</td>
-
-                        
-                        <td>
-                            @if ($product->photos->first())
-                                <img src="{{ asset('storage/' . $product->photos->first()->image_pathe) }}"
-                                     class="rounded"
-                                     width="50">
-                            @else
-                                <img src="https://via.placeholder.com/50" class="rounded">
-                            @endif
-                        </td>
-
-                        <td>{{ $product->name }}</td>
+                        <th>#</th>
+                        <th>الصورة</th>
+                        <th>اسم المنتج</th>
+                        <th>القسم</th>
+                        <th>السعر</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
 
 
-                        <td>
-                            {{ $product->category->name ?? 'No Category' }}
-                        </td>
+                <tbody>
+
+                    @forelse($products as $product)
+                        <tr>
+
+                            <td class="product-id">
+                                {{ $product->id }}
+                            </td>
 
 
-                        <td>${{ $product->price }}</td>
+                            <td>
 
+                                <div class="product-image">
 
-                        <td>
-                            @if ($product->status == 1)
-                                <span class="badge bg-success">Active</span>
-                            @else
-                                <span class="badge bg-danger">Inactive</span>
-                            @endif
-                        </td>
-
-
-                        <td>
-                            <div style="display:flex; gap:6px; align-items:center;">
-
-
-                                <a href="{{ route('admin.products.edit', $product->id) }}"
-                                   class="btn btn-sm"
-                                   style="background-color:#7a3b69; color:white;">
-                                    Edit
-                                </a>
-
-
-                                <form action="{{ route('admin.products.toggleStatus', $product->id) }}"
-                                      method="POST">
-                                    @csrf
-
-                                    @if ($product->status == 1)
-                                        <button type="submit" class="btn btn-sm btn-success">
-                                            Active
-                                        </button>
+                                    @if ($product->photos->first())
+                                        <img src="{{ asset('storage/' . $product->photos->first()->image_pathe) }}"
+                                            alt="{{ $product->name }}">
                                     @else
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            Inactive
-                                        </button>
+                                        <div class="no-product-image">
+                                            <i class="bi bi-image"></i>
+                                        </div>
                                     @endif
-                                </form>
+
+                                </div>
+
+                            </td>
 
 
-                                <form action="{{ route('admin.products.destroy', $product->id) }}"
-                                      method="POST">
-                                    @csrf
-                                    @method('DELETE')<button type="submit"
-                                            class="btn btn-sm"
-                                            style="background-color:#8e44ad; color:white;"
-                                            onclick="return confirm('Are you sure?')">
-                                        Delete
-                                    </button>
-                                </form>
+                            <td class="product-name">
+                                {{ $product->name }}
+                            </td>
 
-                            </div>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="7" class="text-center">
-                            No products found
-                        </td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+
+                            <td class="product-category">
+                                {{ $product->category->name ?? 'بدون قسم' }}
+                            </td>
+
+
+                            <td class="product-price">
+                                ${{ $product->price }}
+                            </td>
+
+
+                            <td>
+
+                                @if ($product->status == 1)
+                                    <span class="product-status status-active">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        متوفر
+                                    </span>
+                                @else
+                                    <span class="product-status status-inactive">
+                                        <i class="bi bi-x-circle-fill"></i>
+                                        غير متوفر
+                                    </span>
+                                @endif
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="product-actions">
+
+                                    <!-- تعديل -->
+                                    <a href="{{ route('admin.products.edit', $product->id) }}"
+                                        class="product-action edit-product">
+
+                                        <i class="bi bi-pencil"></i>
+                                        تعديل
+
+                                    </a>
+
+
+                                    <!-- تغيير الحالة -->
+                                    <form action="{{ route('admin.products.toggleStatus', $product->id) }}" method="POST">
+
+                                        @csrf
+
+                                        @if ($product->status == 1)
+                                            <button type="submit" class="product-action deactivate-product">
+
+                                                <i class="bi bi-eye-slash"></i>
+                                                إخفاء
+
+                                            </button>
+                                        @else
+                                            <button type="submit" class="product-action activate-product">
+
+                                                <i class="bi bi-eye"></i>
+                                                تفعيل
+
+                                            </button>
+                                        @endif
+
+                                    </form>
+
+
+                                    <!-- حذف -->
+                                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="product-action delete-product"
+                                            onclick="return confirm('هل أنتِ متأكدة من حذف هذا المنتج؟')">
+
+                                            <i class="bi bi-trash"></i>
+                                            حذف
+
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                    @empty
+
+                        <tr>
+
+                            <td colspan="7" class="empty-products">
+
+                                <i class="bi bi-box-seam"></i>
+
+                                <strong>لا توجد منتجات</strong>
+
+                                <span>لم تتم إضافة أي منتجات إلى المتجر حتى الآن</span>
+
+                            </td>
+
+                        </tr>
+                    @endforelse
+
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
 @endsection

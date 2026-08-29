@@ -1,74 +1,154 @@
 @extends('admin.layout')
 
 @section('content')
-    <div class="page-box">
+    <div class="page-box product-form-page">
 
-        <h2 class="mb-4">
-            <i class="bi bi-pencil-square"></i> Edit Product
-        </h2>
+        ```
+        <div class="page-header">
 
-        <form class="form-box" action="{{ route('admin.products.update', $product->id) }}" method="POST"
+            <div class="page-title">
+
+                <div class="page-title-icon products-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+
+                <div>
+                    <h2>تعديل المنتج</h2>
+                    <p>تعديل معلومات المنتج وتحديث بياناته</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <form class="form-box product-form-box" action="{{ route('admin.products.update', $product->id) }}" method="POST"
             enctype="multipart/form-data">
 
             @csrf
             @method('PUT')
 
 
+            <!-- اسم المنتج -->
             <div class="form-group">
-                <label>Product Name</label>
-                <input type="text" name="name" class="form-control" value="{{ $product->name }}" required>
+
+                <label for="name">
+                    اسم المنتج
+                </label>
+
+                <input type="text" id="name" name="name" class="form-input" value="{{ $product->name }}"
+                    placeholder="أدخلي اسم المنتج" required>
+
             </div>
 
 
+            <!-- القسم -->
             <div class="form-group">
-                <label>Category</label>
-                <select name="category_id" class="form-control" required>
+
+                <label for="category_id">
+                    القسم
+                </label>
+
+                <select name="category_id" id="category_id" class="form-input" required>
 
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+
                             {{ $category->name }}
+
                         </option>
                     @endforeach
 
                 </select>
+
             </div>
 
 
+            <!-- السعر -->
             <div class="form-group">
-                <label>Price</label>
-                <input type="number" name="price" class="form-control" value="{{ $product->price }}" required>
+
+                <label for="price">
+                    السعر
+                </label>
+
+                <div class="price-input">
+                    <input type="number" id="price" name="price" class="form-input" value="{{ $product->price }}"
+                        placeholder="أدخلي سعر المنتج" required>
+
+                    <span>$</span>
+                </div>
+
             </div>
 
+
+            <!-- الوصف -->
             <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" class="form-control">{{ $product->description }}</textarea>
+
+                <label for="description">
+                    وصف المنتج
+                </label>
+
+                <textarea name="description" id="description" class="form-input form-textarea product-description" rows="6"
+                    placeholder="أدخلي وصف المنتج">{{ $product->description }}</textarea>
+
             </div>
 
 
+            <!-- صورة المنتج -->
             <div class="form-group">
-                <label>Product Image</label>
+
+                <label>
+                    صورة المنتج
+                </label>
+
 
                 @if ($product->image)
-                    <div class="mb-2">
-                        <img src="{{ asset('storage/' . $product->image) }}" width="100">
+                    <div class="current-product-image">
+
+                        <span>الصورة الحالية</span>
+
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+
                     </div>
                 @endif
 
-                <input type="file" name="image" class="form-control">
+
+                <div class="file-upload">
+
+                    <i class="bi bi-cloud-arrow-up"></i>
+
+                    <div>
+                        <strong>اختاري صورة جديدة</strong>
+                        <span>يمكنكِ ترك الحقل فارغاً للاحتفاظ بالصورة الحالية</span>
+                    </div>
+
+                    <input type="file" name="image" class="file-input">
+
+                </div>
+
             </div>
 
-           
+
+            <!-- الأزرار -->
             <div class="form-actions">
-                <button type="submit" class="btn btn-save">
-                    Update Product
+
+                <button type="submit" class="save-btn">
+                    <i class="bi bi-check-circle"></i>
+                    حفظ تعديلات المنتج
                 </button>
 
-                <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">
-                    Back
+
+                <a href="{{ route('admin.products.index') }}" class="back-btn">
+
+                    <i class="bi bi-arrow-right"></i>
+                    العودة إلى المنتجات
+
                 </a>
+
             </div>
 
         </form>
+        ```
 
     </div>
 @endsection

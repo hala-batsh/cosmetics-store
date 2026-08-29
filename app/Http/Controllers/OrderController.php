@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-
     public function index()
     {
         $orders = Auth::user()->role === 'admin'
-            ? Order::with(['products.product', 'user'])->get()
-            : Order::where('user_id', Auth::id())->with(['products.product'])->get();
+            ? Order::with(['products.photos', 'user'])->get()
+            : Order::where('user_id', Auth::id())
+            ->with(['products.photos'])
+            ->get();
 
         return view('user.orders', compact('orders'));
     }
@@ -143,7 +144,7 @@ class OrderController extends Controller
         }
     }
 
-   
+
     public function updateStatus(Request $request, $id)
     {
         if (Auth::user()->role !== 'admin') {

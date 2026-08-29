@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Brand;
+use App\Models\photo;
 
 class ProductController extends Controller
 {
@@ -33,29 +34,34 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'category_id' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $imagePath = null;
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
-        }
-
-        Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'category_id' => $request->category_id,
-            'image' => $imagePath,
             'brand_id' => $request->brand_id,
             'stock' => $request->stock,
             'sku' => $request->sku,
-            'image' => $image ?? null, //
         ]);
 
-        return redirect()->route('admin.products.index')
-            ->with('success', 'Product created successfully');
+        if ($request->hasFile('image')) {
+
+            $imagePath = $request->file('image')->store('products', 'public');
+
+            Photo::create([
+                'product_id' => $product->id,
+                'image_pathe' => $imagePath,
+                'is_main' => 1,
+            ]);
+        }
+
+        return redirect()
+            ->route('admin.products.index')
+            ->with('success', 'تمت إضافة المنتج بنجاح');
     }
 
 
@@ -124,7 +130,7 @@ class ProductController extends Controller
 
         $product->status = $product->status == 1 ? 0 : 1;
 
-        $product->save(); 
+        $product->save();
 
         return back();
     }

@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/products.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/orders.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/faq.css') }}">
+
 
     {{-- Favicon --}}
 </head>
@@ -85,7 +88,7 @@
                 {{-- Cart --}}
                 <a href="{{ route('cart.index') }}" class="nav-icon" title="سلة التسوق">
 
-                    <i class="bi bi-bag"></i>
+                    <i class="bi bi-handbag-fill"></i>
 
                 </a>
 
@@ -94,13 +97,7 @@
                 @auth
 
                     {{-- Account --}}
-                    <a href="{{ route('orders.index') }}" class="nav-user">
-
-                        <i class="bi bi-person"></i>
-
-                        <span>حسابي</span>
-
-                    </a>
+                    {{-- ملاحظة رح طوره باضافة بروفايل للمستخدم --}}
 
 
                     {{-- Logout --}}
@@ -242,28 +239,22 @@
 
                         <li>
                             <a href="{{ route('orders.index') }}">
+                                <i class="bi bi-bag-check"></i>
                                 طلباتي
                             </a>
                         </li>
 
-                        <li>
-                            <a href="{{ route('addresses.index') }}">
-                                عناويني
-                            </a>
-                        </li>
 
                     @endauth
 
                     <li>
-                        <a href="#">
+                        <a href="{{ route('contact') }}">
                             تواصل معنا
                         </a>
                     </li>
 
                     <li>
-                        <a href="#">
-                            الأسئلة الشائعة
-                        </a>
+                        <a href="{{ route('faq') }}">الأسئلة الشائعة</a>
                     </li>
 
                 </ul>
@@ -280,7 +271,7 @@
 
                     <p>
                         <i class="bi bi-telephone"></i>
-                        +963 951 675 437
+                        951675437 963+
                     </p>
 
                     <p>

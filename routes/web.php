@@ -59,6 +59,26 @@ Route::get('/offers', [ProductController::class, 'offers'])
     ->name('offers');
 
 
+
+Route::get('/orders', [OrderController::class, 'index'])
+    ->name('orders.index')
+    ->middleware('auth');
+
+
+Route::get('/faq', function () {
+    return view('user.faq');
+})->name('faq');
+
+use App\Http\Controllers\ContactController;
+
+Route::get('/contact', function () {
+    return view('user.contact');
+})->name('contact');
+
+Route::post('/contact', [ContactController::class, 'send'])
+    ->name('contact.send');
+
+
 // =====================================================
 // تسجيل الدخول - التسجيل - تسجيل الخروج
 // =====================================================

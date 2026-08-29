@@ -6,7 +6,13 @@
 
         <div class="hero-content">
 
-            <p class="hero-subtitle">جمال • أناقة • ثقة</p>
+            <p class="hero-subtitle">
+                <span>جمال</span>
+                <span>•</span>
+                <span>أناقة</span>
+                <span>•</span>
+                <span>ثقة</span>
+            </p>
 
             <h1>
                 اكتشفي<br>
@@ -19,7 +25,7 @@
             </p>
 
             <a href="{{ route('categories') }}" class="hero-btn">
-                اكتشفي مجموعتنا
+                إليكِ مجموعتنا
                 <i class="bi bi-arrow-left"></i>
             </a>
 
@@ -37,7 +43,7 @@
 
         <div class="section-heading">
 
-            <h2>الأكثر مبيعًا</h2>
+            <h2>الأكثر مبيعاً</h2>
 
             <span>
                 منتجات أحبها عملاؤنا واختاروها لإطلالاتهم اليومية
@@ -103,13 +109,42 @@
             @endforeach
 
         </div>
-
     </section>
 
     {{-- ================= OFFERS ================= --}}
     {{-- ================= OFFERS BANNER ================= --}}
 
     <section class="offers-banner">
+
+        {{-- ورود تظهر مرة واحدة عند ظهور القسم --}}
+        <div class="offer-petals" aria-hidden="true">
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-flower2"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart-fill heart"></i>
+
+
+        </div>
 
         <div class="offers-image">
 
@@ -130,8 +165,6 @@
                 <span>
                     35%
                 </span>
-
-
             </h2>
 
 
@@ -144,7 +177,6 @@
             </p>
 
 
-
             <a href="{{ route('offers') }}" class="hero-btn">
 
                 أحدث العروض
@@ -153,9 +185,7 @@
 
             </a>
 
-
         </div>
-
 
     </section>
 
@@ -237,4 +267,20 @@
         </div>
 
     </section>
+    <script>
+        const offers = document.querySelector('.offers-banner');
+
+        const observer = new IntersectionObserver((entries) => {
+
+            if (entries[0].isIntersecting) {
+                offers.classList.add('animate');
+                observer.unobserve(offers);
+            }
+
+        }, {
+            threshold: 0.3
+        });
+
+        observer.observe(offers);
+    </script>
 @endsection

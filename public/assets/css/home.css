@@ -95,7 +95,80 @@
 
     margin-bottom: 30px;
 }
+/* =====================================================
+   HERO SUBTITLE ANIMATION
+===================================================== */
 
+.hero-subtitle span {
+
+    display: inline-block;
+
+    opacity: 0;
+
+    transform: translateX(180px);
+
+    animation: heroTextMove 0.8s ease-out forwards;
+}
+
+
+/* جمال */
+
+.hero-subtitle span:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+
+/* النقطة */
+
+.hero-subtitle span:nth-child(2) {
+    animation-delay: 0.45s;
+}
+
+
+/* أناقة */
+
+.hero-subtitle span:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+
+/* النقطة */
+
+.hero-subtitle span:nth-child(4) {
+    animation-delay: 0.95s;
+}
+
+
+/* ثقة */
+
+.hero-subtitle span:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes heroTextMove {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateX(180px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+}
 
 /* HERO TITLE */
 
@@ -161,6 +234,7 @@
 ===================================================== */
 
 .hero-btn {
+
     width: fit-content;
 
     display: inline-flex;
@@ -187,30 +261,137 @@
 
     opacity: 0;
 
-    animation: heroSlide 1s ease-out forwards;
+    position: relative;
+
+    overflow: hidden;
+
+    animation: heroButtonEntrance 2.4s cubic-bezier(0.22, 1, 0.36, 1) 2.5s forwards;
 
     box-shadow: 0 10px 25px rgba(166, 83, 115, 0.18);
 }
 
 
-@keyframes heroSlide {
+/* =====================================================
+   BUTTON ENTRANCE
+===================================================== */
 
-    from {
+@keyframes heroButtonEntrance {
+
+    /* البداية */
+    0% {
+
         opacity: 0;
 
-        transform: translateX(120px);
+        transform: translateX(180px) scale(0.80);
+
+        filter: blur(5px);
     }
 
-    to {
+
+    /* دخول تدريجي */
+    40% {
+
         opacity: 1;
 
-        transform: translateX(0);
+        transform: translateX(70px) scale(0.95);
+
+        filter: blur(1px);
+    }
+
+
+    /* يقترب من مكانه */
+    65% {
+
+        transform: translateX(25px) scale(1.03);
+
+        filter: blur(0);
+    }
+
+
+    /* يتجاوز مكانه باتجاه اليسار */
+    78% {
+
+        transform: translateX(-100px) scale(1.02);
+    }
+
+
+    /* يرجع بهدوء */
+    90% {
+
+        transform: translateX(10px) scale(1);
+    }
+
+
+    /* مكانه النهائي */
+    100% {
+
+        opacity: 1;
+
+        transform: translateX(0) scale(1);
+
+        filter: blur(0);
+    }
+}
+
+/* =====================================================
+   LUXURY SHINE
+===================================================== */
+
+.hero-btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 70%;
+
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.45),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: buttonShine 1.2s ease 2.6s forwards;
+
+}
+
+
+/* =====================================================
+   SHINE ANIMATION
+===================================================== */
+
+@keyframes buttonShine {
+
+    0% {
+
+        left: -120%;
+
+    }
+
+    100% {
+
+        left: 150%;
+
     }
 
 }
 
 
+/* =====================================================
+   HOVER
+===================================================== */
+
 .hero-btn:hover {
+
     background: #8f4562;
 
     color: white;
@@ -218,20 +399,24 @@
     transform: translateY(-4px);
 
     box-shadow: 0 15px 30px rgba(166, 83, 115, 0.28);
+
 }
 
 
 .hero-btn i {
+
     font-size: 18px;
 
     transition: var(--transition);
+
 }
 
 
 .hero-btn:hover i {
-    transform: translateX(-4px);
-}
 
+    transform: translateX(-4px);
+
+}
 
 /* =====================================================
    HERO IMAGE
@@ -240,14 +425,11 @@
 .hero-image {
     width: 100%;
     height: 100%;
-
     min-height: 650px;
 
     position: relative;
-
     overflow: hidden;
 }
-
 
 .hero-image::after {
     content: "";
@@ -265,7 +447,6 @@
     pointer-events: none;
 }
 
-
 .hero-image img {
     width: 100%;
     height: 100%;
@@ -277,11 +458,9 @@
     transition: transform 1s ease;
 }
 
-
 .hero:hover .hero-image img {
     transform: scale(1.025);
 }
-
 
 /* =====================================================
    GENERAL HOME SECTIONS
@@ -681,35 +860,283 @@
     margin-bottom:35px;
 
 }
+/* =====================================================
+   OFFER PETALS
+===================================================== */
+
+.offers-banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-petals {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.offer-petals i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    color: #a65373;
+    font-size: 40px;
+
+    opacity: 0;
+}
 
 
+/* =====================================================
+   PETAL POSITIONS
+===================================================== */
 
-/* MOBILE */
+.offer-petals i:nth-child(1) {
+    --x: -400px;
+    --y: -140px;
+}
 
-@media(max-width:900px){
+.offer-petals i:nth-child(2) {
+    --x: -300px;
+    --y: -260px;
+}
 
-    .offers-banner{
+.offer-petals i:nth-child(3) {
+    --x: -170px;
+    --y: -310px;
+}
 
-        flex-direction:column;
+.offer-petals i:nth-child(4) {
+    --x: 120px;
+    --y: -290px;
+}
 
-        padding:30px;
+.offer-petals i:nth-child(5) {
+    --x: 270px;
+    --y: -220px;
+}
 
-        gap:35px;
+.offer-petals i:nth-child(6) {
+    --x: 410px;
+    --y: -100px;
+}
 
+.offer-petals i:nth-child(7) {
+    --x: -330px;
+    --y: 50px;
+}
+
+.offer-petals i:nth-child(8) {
+    --x: 350px;
+    --y: 60px;
+}
+
+.offer-petals i:nth-child(9) {
+    --x: -250px;
+    --y: 200px;
+}
+
+.offer-petals i:nth-child(10) {
+    --x: 200px;
+    --y: 250px;
+}
+
+.offer-petals i:nth-child(11) {
+    --x: -150px;
+    --y: 300px;
+}
+
+.offer-petals i:nth-child(12) {
+    --x: 100px;
+    --y: 320px;
+}
+
+.offer-petals i:nth-child(13) {
+    --x: 300px;
+    --y: 280px;
+}
+
+/* القلوب */
+
+.offer-petals .heart {
+    color: #f3558c;
+    font-size:20px;
+}
+
+/* أماكن القلوب */
+
+.offer-petals i:nth-child(15) { --x:-280px; --y:-120px; }
+.offer-petals i:nth-child(16) { --x:-100px; --y:-240px; }
+.offer-petals i:nth-child(17) { --x:180px;  --y:-210px; }
+.offer-petals i:nth-child(18) { --x:320px;  --y:-70px; }
+.offer-petals i:nth-child(19) { --x:-260px; --y:160px; }
+.offer-petals i:nth-child(20) { --x:280px;  --y:150px; }
+.offer-petals i:nth-child(15) { --x:-280px; --y:-120px; }
+.offer-petals i:nth-child(16) { --x:-100px; --y:-240px; }
+.offer-petals i:nth-child(17) { --x:180px;  --y:-210px; }
+.offer-petals i:nth-child(18) { --x:320px;  --y:-70px; }
+.offer-petals i:nth-child(19) { --x:-260px; --y:160px; }
+.offer-petals i:nth-child(20) { --x:280px;  --y:150px; }
+.offer-petals i:nth-child(21) { --x:-390px; --y:-20px; }
+.offer-petals i:nth-child(22) { --x:-170px; --y:100px; }
+.offer-petals i:nth-child(23) { --x:80px;   --y:180px; }
+.offer-petals i:nth-child(24) { --x:180px;  --y:70px; }
+.offer-petals i:nth-child(25) { --x:370px;  --y:120px; }
+.offer-petals i:nth-child(26) { --x:30px;   --y:-150px; }
+
+
+/* حركة الانتشار */
+
+@keyframes petals {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(.2)
+            rotate(0deg);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: .9;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(.9)
+            rotate(220deg);
+    }
+}
+
+
+/* =====================================================
+   START PETALS WHEN SECTION APPEARS
+===================================================== */
+
+.offers-banner.animate .offer-petals i {
+    animation: petals 3s ease-out forwards;
+}
+
+
+/* =====================================================
+   PETAL ANIMATION
+===================================================== */
+
+@keyframes petals {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.2)
+            rotate(0deg);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: .9;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(.9)
+            rotate(220deg);
+    }
+}
+
+
+/* =====================================================
+   35% DISCOUNT ANIMATION
+===================================================== */
+
+.offers-content h2 span {
+    display: inline-block;
+}
+
+
+/* تبدأ بعد وصول المستخدم للقسم */
+
+.offers-banner.animate .offers-content h2 span {
+    animation: discountPulse 3s ease-in-out infinite;
+}
+
+
+@keyframes discountPulse {
+
+    0%,
+    65%,
+    100% {
+        transform: scale(1);
+    }
+
+    72% {
+        transform: scale(1.15);
+    }
+
+    80% {
+        transform: scale(.98);
+    }
+
+    88% {
+        transform: scale(1.08);
+    }
+
+    94% {
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .offers-banner {
+        flex-direction: column;
+
+        padding: 30px;
+
+        gap: 35px;
     }
 
 
-    .offers-image img{
-
-        height:300px;
-
+    .offers-image img {
+        height: 300px;
     }
 
 
-    .offers-content h2{
+    .offers-content h2 {
+        font-size: 30px;
+    }
 
-        font-size:30px;
 
+    /* تصغير انتشار الورود على الموبايل */
+
+    .offer-petals i {
+        font-size: 19px;
     }
 
 }
@@ -872,7 +1299,10 @@
         font-size: 50px;
     }
 
-}
+    }
+
+
+
 
 
 /* =====================================================
@@ -939,13 +1369,6 @@
         justify-content: center;
 
         font-size: 16px;
-    }
-
-
-    .hero-image {
-        min-height: 400px;
-
-        max-height: 450px;
     }
 
 

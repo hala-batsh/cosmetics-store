@@ -1,37 +1,94 @@
 @extends('admin.layout')
 
 @section('content')
-    <div class="page-box">
-        <h2 class="mb-4">
-            <i class="bi bi-speedometer2"></i> Dashboard
-        </h2>
+    <div class="dashboard-page">
+
+        <div class="dashboard-header">
+            <h2 class="dashboard-title">
+                <i class="bi bi-speedometer2"></i>
+                لوحة التحكم
+            </h2>
+
+            <p class="dashboard-subtitle">
+                مرحباً بكِ في لوحة إدارة المتجر
+            </p>
+        </div>
+
 
         <div class="dashboard-cards">
 
-            <a href="/admin/categories" class="dashboard-card text-decoration-non">
-                <i class="bi bi-tags"></i>
-                <h5>Categories</h5>
-                <p>Manage categories</p>
+            <!-- الأقسام -->
+            <a href="/admin/categories" class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    <i class="bi bi-tags"></i>
+                </div>
+
+                <h5>الأقسام</h5>
+
+                <p>إدارة أقسام المنتجات</p>
+
+                <span class="dashboard-arrow">
+                    <i class="bi bi-arrow-left"></i>
+                </span>
+
             </a>
 
-            <a href="/admin/products" class="dashboard-card text-decoration-none">
-                <i class="bi bi-box"></i>
-                <h5>Products</h5>
-                <p>Manage products</p>
+
+            <!-- المنتجات -->
+            <a href="/admin/products" class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+
+                <h5>المنتجات</h5>
+
+                <p>إدارة منتجات المتجر</p>
+
+                <span class="dashboard-arrow">
+                    <i class="bi bi-arrow-left"></i>
+                </span>
+
             </a>
 
-            <a href="/admin/orders" class="dashboard-card text-decoration-none">
-                <i class="bi bi-receipt"></i>
-                <h5>Orders</h5>
-                <p>View orders</p>
+
+            <!-- الطلبات -->
+            <a href="/admin/orders" class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    <i class="bi bi-receipt"></i>
+                </div>
+
+                <h5>الطلبات</h5>
+
+                <p>متابعة وإدارة الطلبات</p>
+
+                <span class="dashboard-arrow">
+                    <i class="bi bi-arrow-left"></i>
+                </span>
+
             </a>
 
-            <a href="/admin/statistics" class="dashboard-card text-decoration-none">
-                <i class="bi bi-graph-up"></i>
-                <h5>Statistics</h5>
-                <p>Overview</p>
+
+            <!-- الإحصائيات -->
+            <a href="/admin/statistics" class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    <i class="bi bi-bar-chart-line"></i>
+                </div>
+
+                <h5>الإحصائيات</h5>
+
+                <p>عرض إحصائيات المتجر</p>
+
+                <span class="dashboard-arrow">
+                    <i class="bi bi-arrow-left"></i>
+                </span>
+
             </a>
 
         </div>
+
     </div>
 @endsection

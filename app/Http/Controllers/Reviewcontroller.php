@@ -22,6 +22,6 @@ class ReviewController extends Controller
             'comment' => $request->comment,
         ]);
 
-        return back()->with('success', 'Review added successfully!');
+        return back()->with('success', '  تم اضافة تقيمك بنجاح');
     }
 }

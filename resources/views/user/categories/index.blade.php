@@ -7,8 +7,8 @@
 
 
             <h1>
-                اكتشفي
-                <span>عالم الجمال</span>
+                اكتشفي عالم من
+                <span> الجمال</span>
             </h1>
 
             <p class="page-description">

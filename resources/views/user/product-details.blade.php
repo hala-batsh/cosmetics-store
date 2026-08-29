@@ -80,7 +80,7 @@
 
                 <p class="product-details-label">
 
-                    HALA BEAUTY COSMETICS
+                    COSMETICS STORE HALA
 
                 </p>
 
